@@ -60,7 +60,7 @@ const Home = () => {
     };
 
     checkToken();
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     const getOrders = async () => {
