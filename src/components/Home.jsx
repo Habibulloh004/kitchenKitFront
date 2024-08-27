@@ -7,10 +7,8 @@ import { useSocketContext } from "../context/SocketContext";
 import { formatTimeFromNumber, truncateText } from "../utils";
 import DialogPopup from "./Dialog";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const navigate = useNavigate();
   const token = Cookies.get("authToken");
   const spot = JSON.parse(localStorage.getItem("spot"));
   const { socket } = useSocketContext();
@@ -41,7 +39,7 @@ const Home = () => {
       if (!accountSettings) {
         try {
           const resultToken = await axios.get(
-            `https://kitchenkit.onrender.com/checkToken?token=${token}`
+            `${import.meta.env.VITE_BACKEND}/checkToken?token=${token}`
           );
           accountSettings = resultToken.data.response;
           localStorage.setItem(
@@ -65,7 +63,7 @@ const Home = () => {
       if (accountSettings) {
         try {
           const result = await axios.post(
-            `https://kitchenkit.onrender.com/getOrders`,
+            `${import.meta.env.VITE_BACKEND}/getOrders`,
             {
               accountUrl: accountSettings.COMPANY_ID,
             }
@@ -125,7 +123,7 @@ const Home = () => {
   const changeStatus = async (orderId, item, status) => {
     try {
       const productChangeStatus = await axios.put(
-        `https://kitchenkit.onrender.com/changeOrderStatus/${orderId}`,
+        `${import.meta.env.VITE_BACKEND}/changeOrderStatus/${orderId}`,
         { item }
       );
 
@@ -198,7 +196,7 @@ const Home = () => {
   const closeTransaction = async (orderId) => {
     try {
       const response = await axios.delete(
-        `https://kitchenkit.onrender.com/closeTransaction/${orderId}`
+        `${import.meta.env.VITE_BACKEND}/closeTransaction/${orderId}`
       );
       console.log(response.data);
 
@@ -210,6 +208,7 @@ const Home = () => {
       console.error("Error closing transaction", error);
     }
   };
+  console.log(data);
 
   if (!data) {
     return <Loader />;
