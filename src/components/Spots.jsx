@@ -19,6 +19,12 @@ const Spots = () => {
   console.log("havetoken spot:", haveToken);
 
   useEffect(() => {
+    if (haveToken) {
+      Cookies.set("authToken", haveToken);
+    }
+  }, []);
+
+  useEffect(() => {
     const getOrders = async () => {
       if (token && haveToken) {
         try {
