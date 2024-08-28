@@ -2,19 +2,25 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { useLocation } from "react-router-dom";
 
 const Spots = () => {
+  const location = useLocation()
   const token = Cookies.get("authToken");
   const [spots, setSpots] = useState([]);
   const [chosenSpot, setChosenSpot] = useState(
     JSON.parse(localStorage.getItem("spot")) || null
   );
+
+  const queryParams = new URLSearchParams(location.search);
+  const haveToken = queryParams.get("token");
+
   useEffect(() => {
     const getOrders = async () => {
-      if (token) {
+      if (token && haveToken) {
         try {
           const result = await axios.get(
-            `${import.meta.env.VITE_BACKEND}/getSpots?token=${token}`
+            `${import.meta.env.VITE_BACKEND}/getSpots?token=${token ? token : haveToken}`
           );
           setSpots(result.data);
         } catch (error) {
