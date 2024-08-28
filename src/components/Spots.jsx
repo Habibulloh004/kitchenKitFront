@@ -15,6 +15,9 @@ const Spots = () => {
   const queryParams = new URLSearchParams(location.search);
   const haveToken = queryParams.get("token");
 
+  console.log("token spot:", token);
+  console.log("havetoken spot:", haveToken);
+
   useEffect(() => {
     const getOrders = async () => {
       if (token && haveToken) {
