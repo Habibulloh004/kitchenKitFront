@@ -27,9 +27,6 @@ const Home = () => {
 
   const queryParams = new URLSearchParams(location.search);
   const haveToken = queryParams.get("token");
-
-  console.log("token home:", token);
-  console.log("havetoken home:", haveToken);
   
   useEffect(() => {
     if (haveToken) {

@@ -15,9 +15,6 @@ const Spots = () => {
   const queryParams = new URLSearchParams(location.search);
   const haveToken = queryParams.get("token");
 
-  console.log("token spot:", token);
-  console.log("havetoken spot:", haveToken);
-
   useEffect(() => {
     if (haveToken) {
       Cookies.set("authToken", haveToken);
@@ -26,7 +23,7 @@ const Spots = () => {
 
   useEffect(() => {
     const getOrders = async () => {
-      if (token && haveToken) {
+      if (token || haveToken) {
         try {
           const result = await axios.get(
             `${import.meta.env.VITE_BACKEND}/getSpots?token=${token ? token : haveToken}`
@@ -43,7 +40,7 @@ const Spots = () => {
   }, [token]);
 
   return (
-    <div className=" text-right">
+    <div className="text-right">
       {!spots.length ? null : (
         <Menu>
           <MenuButton className="inline-flex items-center gap-2 rounded-md bg-gray-800 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
