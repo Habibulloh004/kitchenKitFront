@@ -62,6 +62,9 @@ export const DataContextProvider = ({ children }) => {
             (item) => item.accountData.spotId == chosenSpot.spot_id
           );
 
+          console.log("item result spot:", result.data);
+          console.log("chosen spot:", chosenSpot.spot_id);
+
           let filterWorkshop = filteredOrders;
 
           if (chosenWorkshop) {
