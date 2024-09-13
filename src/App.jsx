@@ -99,7 +99,7 @@ function App() {
           </main>
         </>
       ) : (
-        <main className="relative">
+        <main className="relative min-h-screen">
           <Toaster position="top-center" reverseOrder={false} />
 
           <Navbar />
