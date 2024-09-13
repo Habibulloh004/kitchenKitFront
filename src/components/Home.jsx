@@ -311,7 +311,7 @@ const Home = () => {
                   </p>
                   <span className="text-base text-gray-600 flex flex-col items-end">
                     <p>{nameWaiter && nameWaiter.name}</p>
-                    <p>Стол {order.orderInformation.tableName.table_num}</p>
+                    <p>Стол {order.orderInformation.tableId}</p>
                   </span>
                 </div>
                 <div className="flex items-center justify-between gap-3">
