@@ -49,7 +49,7 @@ const Navbar = () => {
         </ul> */}
         <div></div>
         <div className="flex items-center gap-4 md:gap-10">
-          <Workshops />
+          {/* <Workshops /> */}
           <Spots />
           <p
             onClick={() => {
