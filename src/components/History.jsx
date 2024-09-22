@@ -46,7 +46,7 @@ const History = () => {
       {orders.length === 0 ? (
         <p>Заказы отсутствуют</p>
       ) : (
-        <ul className="flex gap-3">
+        <ul className="flex gap-3 items-start justify-start">
           {orders.map((order) => (
             <li
               key={order._id}
