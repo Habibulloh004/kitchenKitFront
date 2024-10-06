@@ -67,7 +67,7 @@ const Spots = () => {
                     }}
                     className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10"
                   >
-                    {item.spot_id == chosenSpot.spot_id && <FaCheck />}{" "}{item.name}
+                    {chosenSpot && item.spot_id == chosenSpot.spot_id && <FaCheck />}{" "}{item.name}
                   </button>
                 </MenuItem>
               );
