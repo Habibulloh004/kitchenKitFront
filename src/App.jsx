@@ -26,7 +26,7 @@ import toast from "react-hot-toast";
 
 //   return token || haveToken
 //     ? element
-//     : (window.location.href = `https://joinposter.com/api/auth?application_id=3629&redirect_uri=${
+//     : (window.location.href = `https://joinposter.com/api/auth?application_id=3544&redirect_uri=${
 //         import.meta.env.VITE_BACKEND
 //       }/auth&response_type=code`);
 // };
@@ -132,7 +132,7 @@ function App() {
             className="fixed bottom-5 left-5 rounded-full p-2 bg-white/70"
             onClick={() => window.location.reload()}
           >
-            <IoReload />
+            <IoReload className="size-3" />
           </div>
           <div className="fixed bottom-5 right-5 flex flex-col items-end gap-3">
             <div className="flex flex-col items-end gap-3">
@@ -161,7 +161,7 @@ function App() {
                 }}
                 className="inline-flex items-center gap-2 rounded-md bg-blue-500/30 p-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
               >
-                <MdSupportAgent className="size-6" />
+                <MdSupportAgent className="size-4" />
               </p>
               <p
                 onClick={() => {
@@ -176,10 +176,10 @@ function App() {
                               toast.dismiss(t.id);
                               Cookies.remove("authToken");
                               localStorage.clear();
-                              // location.pathname = `https://joinposter.com/api/auth?application_id=3629&redirect_uri=${
+                              // location.pathname = `https://joinposter.com/api/auth?application_id=3544&redirect_uri=${
                               //   import.meta.env.VITE_BACKEND
                               // }/auth&response_type=code`;
-                              window.location.href = `https://joinposter.com/api/auth?application_id=3629&redirect_uri=${
+                              window.location.href = `https://joinposter.com/api/auth?application_id=3544&redirect_uri=${
                                 import.meta.env.VITE_BACKEND
                               }/auth&response_type=code`;
                               // navigate("/")
@@ -207,7 +207,7 @@ function App() {
                 }}
                 className="inline-flex items-center gap-2 rounded-md bg-red-500 p-2 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
               >
-                <GiExitDoor className="size-6" />
+                <GiExitDoor className="size-4" />
               </p>
             </div>
           </div>

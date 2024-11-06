@@ -659,12 +659,12 @@ function ProductTimer({ product, orderTime, onClickHandler }) {
       }
     >
       <div className="flex gap-3 p-3 justify-between">
-        <p className="font-semibold text-xl">
+        <p className="font-semibold text-xl w-[10%]">
           {product.status == "deleted" && "-"}
           {product.count}
         </p>
-        <div className="flex justify-between items-start gap-5 w-3/4">
-          <span className="space-y-2">
+        <div className="flex justify-between items-start gap-5 w-[89%]">
+          <span className="space-y-2 w-[80%]">
             <p className="font-semibold text-lg">
               {product?.product_name}{" "}
               {`${
@@ -672,7 +672,7 @@ function ProductTimer({ product, orderTime, onClickHandler }) {
               }`}
             </p>
           </span>
-          <p className="text-gray-800 font-semibold">
+          <p className="text-gray-800 font-semibold w-[15%]">
             {product.status != "deleted" &&
               product.cooking_time &&
               formatTime(remainingTime)}
