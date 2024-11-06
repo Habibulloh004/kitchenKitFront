@@ -26,7 +26,7 @@ import toast from "react-hot-toast";
 
 //   return token || haveToken
 //     ? element
-//     : (window.location.href = `https://joinposter.com/api/auth?application_id=3544&redirect_uri=${
+//     : (window.location.href = `https://joinposter.com/api/auth?application_id=3629&redirect_uri=${
 //         import.meta.env.VITE_BACKEND
 //       }/auth&response_type=code`);
 // };
@@ -176,10 +176,10 @@ function App() {
                               toast.dismiss(t.id);
                               Cookies.remove("authToken");
                               localStorage.clear();
-                              // location.pathname = `https://joinposter.com/api/auth?application_id=3544&redirect_uri=${
+                              // location.pathname = `https://joinposter.com/api/auth?application_id=3629&redirect_uri=${
                               //   import.meta.env.VITE_BACKEND
                               // }/auth&response_type=code`;
-                              window.location.href = `https://joinposter.com/api/auth?application_id=3544&redirect_uri=${
+                              window.location.href = `https://joinposter.com/api/auth?application_id=3629&redirect_uri=${
                                 import.meta.env.VITE_BACKEND
                               }/auth&response_type=code`;
                               // navigate("/")
