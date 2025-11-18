@@ -11,6 +11,13 @@ import toast from "react-hot-toast";
 import { useLocation } from "react-router-dom";
 import notice from "../../public/notice.mp3";
 
+const formatCreatedAt = (createdAt) => {
+  if (!createdAt) return "";
+  const timestamp = new Date(createdAt).getTime();
+  if (Number.isNaN(timestamp)) return "";
+  return formatTimeFromNumber(timestamp);
+};
+
 const Home = () => {
   const location = useLocation();
   const token = Cookies.get("authToken");
@@ -561,7 +568,7 @@ const Home = () => {
                     {truncateText(order?.orderInformation.comment)}
                   </p>
                   <p className="text-gray-600">
-                    {formatTimeFromNumber(order?.orderInformation.dateStart)}
+                    {formatCreatedAt(order?.createdAt)}
                   </p>
                 </div>
                 <section className="space-y-4">
