@@ -11,10 +11,22 @@ import toast from "react-hot-toast";
 import { useLocation } from "react-router-dom";
 import notice from "../../public/notice.mp3";
 
+const normalizeTimestampToMs = (value) => {
+  if (!value && value !== 0) return null;
+
+  const numericValue = Number(value);
+  if (!Number.isNaN(numericValue)) {
+    const isSeconds = numericValue < 1e12; // crude check to detect seconds vs milliseconds
+    return isSeconds ? numericValue * 1000 : numericValue;
+  }
+
+  const parsed = new Date(value).getTime();
+  return Number.isNaN(parsed) ? null : parsed;
+};
+
 const formatCreatedAt = (createdAt) => {
-  if (!createdAt) return "";
-  const timestamp = new Date(createdAt).getTime();
-  if (Number.isNaN(timestamp)) return "";
+  const timestamp = normalizeTimestampToMs(createdAt);
+  if (timestamp === null) return "";
   return formatTimeFromNumber(timestamp);
 };
 
@@ -590,7 +602,7 @@ const Home = () => {
                               <ProductTimer
                                 key={`${orderItemIndex}-${index}`}
                                 product={product}
-                                orderTime={order.orderInformation.dateStart}
+                                orderTime={order?.createdAt}
                                 onClickHandler={() => {
                                   masterOrderInfo(product);
                                   masterBarInfo(orderItem);
@@ -633,17 +645,16 @@ function ProductTimer({ product, orderTime, onClickHandler }) {
       return;
     }
 
-    const createdTime = new Date(orderTime); // orderTime is already in milliseconds
-    if (isNaN(createdTime.getTime())) {
+    const createdTime = normalizeTimestampToMs(orderTime);
+
+    if (createdTime === null) {
       console.error("Invalid orderTime:", orderTime);
       setRemainingTime(0);
       return;
     }
 
     const currentTime = Date.now(); // Current time in milliseconds
-    const elapsedTime = Math.floor(
-      (currentTime - createdTime.getTime()) / 1000
-    ); // Elapsed time in seconds
+    const elapsedTime = Math.floor((currentTime - createdTime) / 1000); // Elapsed time in seconds
 
     setRemainingTime(Math.max(product.cooking_time - elapsedTime, 0));
 
